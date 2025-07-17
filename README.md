@@ -1,7 +1,6 @@
+# 📚 Library Management System (Full Stack)
 
-# 📚 Library Management System
-
-A Spring Boot RESTful application that handles core library operations such as managing users, issuing library cards, managing authors and their books, and handling book reviews.
+A complete full-stack Library Management System built with **Spring Boot (Backend)** and **React.js + Bootstrap (Frontend)**. It supports core library operations such as managing users, issuing library cards, managing authors and their books, and handling book reviews.
 
 ---
 
@@ -28,6 +27,7 @@ A Spring Boot RESTful application that handles core library operations such as m
 | Database   | PostgreSQL                  |
 | Validation | Jakarta Bean Validation     |
 | API Docs   | Swagger (Springdoc OpenAPI) |
+| Frontend   | React.js + Bootstrap 5      |
 
 ---
 
@@ -39,7 +39,7 @@ A Spring Boot RESTful application that handles core library operations such as m
 
 ---
 
-## 🔗 API Endpoints
+## 🔗 Backend API Endpoints
 
 | Method | Endpoint                                            | Description                               |
 |--------|-----------------------------------------------------|-------------------------------------------|
@@ -59,8 +59,6 @@ A Spring Boot RESTful application that handles core library operations such as m
 ### 👤 Add User and Issue Library Card
 
 ```json
-POST /LMS/add-user-and-issue-library-card
-
 {
   "name": "Alice",
   "email": "alice@example.com",
@@ -72,9 +70,8 @@ POST /LMS/add-user-and-issue-library-card
 ```
 
 ### 🧑‍💼 Add Author and Books
-```json
-POST /LMS/add-author-and-books
 
+```json
 {
   "name": "J.K. Rowling",
   "booksDTOS": [
@@ -85,9 +82,8 @@ POST /LMS/add-author-and-books
 ```
 
 ### 💬 Add Book Review
-```json
-POST /LMS/add-reviews/Harry Potter and the Philosopher's Stone
 
+```json
 {
   "rating": 5,
   "comment": "Fantastic fantasy novel!"
@@ -103,7 +99,7 @@ POST /LMS/add-reviews/Harry Potter and the Philosopher's Stone
 
 ---
 
-## 🔄 Database Configuration
+## 🔄 Backend Database Configuration
 
 Update `src/main/resources/application.properties`:
 
@@ -118,25 +114,52 @@ spring.jpa.hibernate.ddl-auto=update
 
 ## 💻 How to Run
 
+### 🧾 1. Clone the Repository
+
 ```bash
-# Clone repo
 git clone https://github.com/thimothybabu123/LibraryManagementSystem
 cd LibraryManagementSystem
-
-# Build and run
-mvn clean install
-mvn spring-boot:run
 ```
 
 ---
 
-## 🔍 Swagger UI
+### 🔧 2. Run Backend (Spring Boot)
 
-To view and test APIs visually via Swagger UI:
+```bash
+# Build & run backend
+mvn clean install
+mvn spring-boot:run
+```
+
+The backend will be available at:  
+[http://localhost:8080](http://localhost:8080)
+
+---
+
+### 🎨 3. Run Frontend (React App)
+
+The frontend is located inside the `frontend/` folder.
+
+```bash
+cd frontend
+npm install
+npm start
+```
+
+This will start the React app at:  
+[http://localhost:3000](http://localhost:3000)
+
+> 🔁 The frontend communicates with the backend via `http://localhost:8080`.
+
+---
+
+### 🌐 4. API Docs via Swagger UI
+
+Once backend is running, access:
 
 [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
 
-Add this dependency to your `pom.xml`:
+Add this to `pom.xml` if not present:
 
 ```xml
 <dependency>
